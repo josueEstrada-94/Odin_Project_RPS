@@ -5,10 +5,9 @@ function getComputerChoice() {
     // Random indexing
     let randomIndex = Math.floor(Math.random() * choices.length);
   
-    // Muestra el string aleatorio en la consola
+    // Shows the choice in the console
     console.log(choices[randomIndex]);
   }
   
-  // Llama a la función para mostrar un string aleatorio
+  // Calls the function to show a random choice
   getComputerChoice();
-  
