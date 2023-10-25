@@ -6,8 +6,24 @@ function getComputerChoice() {
     let randomIndex = Math.floor(Math.random() * choices.length);
   
     // Shows the choice in the console
-    console.log(choices[randomIndex]);
+    return(choices[randomIndex]);
   }
   
-  // Calls the function to show a random choice
-  getComputerChoice();
+function playRound(playerSelection, computerSelection){
+    
+    if (playerSelection === computerSelection)
+    {
+      console.log('This is a tie!')
+
+    } else if (playerSelection === 'paper' && computerSelection === 'Rock') 
+    {
+      console.log('you won!')
+    } else{
+      console.log('you lose')
+    }
+}
+
+const playerSelection = 'Paper';
+const computerSelection = getComputerChoice();
+
+console.log(playRound(playerSelection, computerSelection))
