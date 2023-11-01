@@ -15,33 +15,33 @@ function playRound(playerSelection, computerSelection){
 
     if (playerSelection === computerSelection)
     {
-      console.log('This is a tie!');
+      gameResult.textContent = 'This is a tie!';
 
     } else if (playerSelection === 'paper' && computerSelection === 'rock') 
     {
-      console.log('you won! paper beats rock');
+      gameResult.textContent = 'you won! paper beats rock';
     } 
     
     else if (playerSelection === 'rock' && computerSelection === 'scissors')
     {
-      console.log('you won! rock beats scissors');
+      gameResult.textContent = 'you won! rock beats scissors';
     }
     
     else if (playerSelection === 'scissors' && computerSelection === 'paper')
     {
-      console.log('you won! scissors beats paper');
+      gameResult.textContent = 'you won! scissors beats paper';
     }
 
     else
     {
-      console.log('you lose!');
+      gameResult.textContent = 'you lose!';
     }
 }
 
     // Setting the conditions to decide who won the game.
-/*    function game(){
-      let playerScore = 0;
-      let computerScore = 0;
+      function game(){
+        let playerScore = 0;
+        let computerScore = 0;
     
         // Declaring the variables.
         const playerSelection = prompt('Select rock, paper or scissors').toLowerCase()
@@ -69,9 +69,8 @@ function playRound(playerSelection, computerSelection){
         }
 }
 
-//game()*/
 
-
+// Creating buttons.
 const sect = document.querySelector('section');
 const paperButton = document.createElement('button');
 const rockButton = document.createElement('button');
@@ -86,6 +85,7 @@ sect.appendChild(rockButton);
 sect.appendChild(scissorsButton);
 
 
+//Creating clicking events to the buttons.
 
 paperButton.addEventListener('click', ()=>{
   playRound('paper', getComputerChoice());
@@ -98,6 +98,11 @@ rockButton.addEventListener('click', function() {
 scissorsButton.addEventListener('click', function() {
   playRound('scissors', getComputerChoice());
 });
+
+
+//Creating a div for displaying results.
+const gameResult = document.createElement('div');
+sect.appendChild(gameResult);
 
 
 
