@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(225, 209, 209);
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+section{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.game-button{
+    font-size: 30px;
+    padding: 30px;
+    background-color: bisque;
+    border: 1px solid rgb(196, 173, 145);
+    border-radius: 8px;
+}
+
+.game-result, .player-score, .pc-score {
+    padding: 10px;
+    margin: 40px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+footer {
+    font-size: 26px;
+    background: rgb(57, 57, 83);
+    color: antiquewhite;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgb(108, 108, 202);
+}
+

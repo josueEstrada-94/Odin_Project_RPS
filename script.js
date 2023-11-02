@@ -21,19 +21,19 @@ function getComputerChoice() {
         gameResult.textContent = 'This is a tie!';
 
       } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        gameResult.textContent = 'you won! paper beats rock';
+        gameResult.textContent = 'You won! paper beats rock';
         playerScore++;
 
       } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        gameResult.textContent = 'you won! rock beats scissors';
+        gameResult.textContent = 'You won! rock beats scissors';
         playerScore++;
 
       } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        gameResult.textContent = 'you won! scissors beats paper';
+        gameResult.textContent = 'You won! scissors beats paper';
         playerScore++;
 
       } else {
-        gameResult.textContent = 'you lose!';
+        gameResult.textContent = 'You lose!';
         computerScore++;
       }
   
@@ -60,7 +60,9 @@ function getComputerChoice() {
   }
 
 // Creating buttons.
+const body = document.querySelector('body');
 const sect = document.querySelector('section');
+const resultsDisplay = document.createElement('div'); 
 const paperButton = document.createElement('button');
 const rockButton = document.createElement('button');
 const scissorsButton = document.createElement('button');
@@ -72,7 +74,7 @@ scissorsButton.textContent = 'Scissors';
 sect.appendChild(paperButton);
 sect.appendChild(rockButton);
 sect.appendChild(scissorsButton);
-
+body.appendChild(resultsDisplay);
 
 //Creating clicking events to the buttons.
 
@@ -89,13 +91,24 @@ scissorsButton.addEventListener('click', function() {
 });
 
 
-//Creating a div for displaying results.
+//Creating a div for displaying results and for styling.
 const gameResult = document.createElement('div');
-sect.appendChild(gameResult);
 const playerScoreDisplay = document.createElement('div');
 const computerScoreDisplay = document.createElement('div');
-sect.appendChild(playerScoreDisplay);
-sect.appendChild(computerScoreDisplay);
+resultsDisplay.appendChild(playerScoreDisplay);
+resultsDisplay.appendChild(computerScoreDisplay);
+resultsDisplay.appendChild(gameResult);
 
+const footer = document.createElement('footer');
+footer.textContent = 'Made by Josue Estrada. Thanks for Playing!';
+body.appendChild(footer);
 
+// Creating classes for CSS styling.
+
+paperButton.className= 'game-button';
+rockButton.className= 'game-button';
+scissorsButton.className = 'game-button';
+gameResult.className ='game-result';
+playerScoreDisplay.className = 'player-score';
+computerScoreDisplay.className = 'pc-score';
 
