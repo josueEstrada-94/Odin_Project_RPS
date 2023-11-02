@@ -9,66 +9,55 @@ function getComputerChoice() {
     return(choices[randomIndex]);
   }
   
-function playRound(playerSelection, computerSelection){
-    // This function returns a string if the player win or not against the computer answer. 
-    //This is just a single round.
+  let round = 0;
+  let playerScore = 0;
+  let computerScore = 0;
 
-    if (playerSelection === computerSelection)
-    {
-      gameResult.textContent = 'This is a tie!';
+  function playRound(playerSelection, computerSelection) {
+    /*This function runs the game itself*/
 
-    } else if (playerSelection === 'paper' && computerSelection === 'rock') 
-    {
-      gameResult.textContent = 'you won! paper beats rock';
-    } 
-    
-    else if (playerSelection === 'rock' && computerSelection === 'scissors')
-    {
-      gameResult.textContent = 'you won! rock beats scissors';
-    }
-    
-    else if (playerSelection === 'scissors' && computerSelection === 'paper')
-    {
-      gameResult.textContent = 'you won! scissors beats paper';
-    }
+    if (round < 5) {
+      if (playerSelection === computerSelection) {
+        gameResult.textContent = 'This is a tie!';
 
-    else
-    {
-      gameResult.textContent = 'you lose!';
-    }
-}
+      } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        gameResult.textContent = 'you won! paper beats rock';
+        playerScore++;
 
-    // Setting the conditions to decide who won the game.
-      function game(){
-        let playerScore = 0;
-        let computerScore = 0;
-    
-        // Declaring the variables.
-        const playerSelection = prompt('Select rock, paper or scissors').toLowerCase()
-        const computerSelection = getComputerChoice();
-    
-        let result = playRound(playerSelection, computerSelection)
-    
-        // Showing the round and the result of the round. 
-        console.log(`Round ${i + 1}: ${result}`);
-    
-        // Setting the conditions to gain score.
-        if (result.includes('you won')) {
-          playerScore++;
-        } else if (result.includes('you lose')) {
-          computerScore++;
-        }
-      
-        // Setting the conditions to decide who won the game.
+      } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        gameResult.textContent = 'you won! rock beats scissors';
+        playerScore++;
+
+      } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        gameResult.textContent = 'you won! scissors beats paper';
+        playerScore++;
+
+      } else {
+        gameResult.textContent = 'you lose!';
+        computerScore++;
+      }
+  
+      round++;
+  
+      if (round === 5) {
+        // This if statement make the decision of who won, after that, the buttons are disabled.
         if (playerScore > computerScore) {
-          console.log('You won the game!');
+          gameResult.textContent = 'You won the game! the Computer was crashed!';
         } else if (playerScore === computerScore) {
-          console.log('It\'s a tie!');
+          gameResult.textContent = "It's a tie! Both are Really Good!";
         } else {
-          console.log('You lose!');
+          gameResult.textContent = 'You lose! The Computer wins';
         }
-}
+  
+        paperButton.disabled = true;
+        rockButton.disabled = true;
+        scissorsButton.disabled = true;
 
+        playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+        computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+      }
+    }
+  }
 
 // Creating buttons.
 const sect = document.querySelector('section');
@@ -103,6 +92,10 @@ scissorsButton.addEventListener('click', function() {
 //Creating a div for displaying results.
 const gameResult = document.createElement('div');
 sect.appendChild(gameResult);
+const playerScoreDisplay = document.createElement('div');
+const computerScoreDisplay = document.createElement('div');
+sect.appendChild(playerScoreDisplay);
+sect.appendChild(computerScoreDisplay);
 
 
 
